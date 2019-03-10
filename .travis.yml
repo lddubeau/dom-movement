@@ -1,0 +1,20 @@
+language: node_js
+# There isn't much gained from testing on old versions of Node. This package is
+# meant to run in a browser.
+node_js:
+  - "node"
+addons:
+  chrome: stable
+  firefox: latest
+  browserstack:
+    forcelocal: true
+    username:
+      secure: "O5OIwW6fdUuuLuNtPa3ubNFLnA3u/RctUTAla3SkzrRdMaJx0ZvrvosPCL+V6n1nnohywqfRY/FZMynjzxakURcRskK7UkYfyL6piYVDfZdLW2nIhmNyjssbke3JJ1d/VfTqqVPG/owVWWH1XXFS/HP5JOlRoCAuntGiLCI0smRoAEGYFVpGEDJ7e6xF9PH13TltvnNGWCRJvovvKc7VvfqMumVeLiqHfliLM9lnZC1PA8BbUxvXyfJe7bp2RHM4YLoGCLTb0YNPX4nCglRyWFGlIpR+sWWIVmtQ5S2GwBLW6NHaMufvmUFlaZBECkb8sbICO+C/rnePa9+TYVvSLJrZHJnXH0ttl2GBBC5FHJydueZ9Y8t5J7O20odvmwv97D7Z4YE8P7TSJCEiEaHsKTyLtBZpu8jjjCMkxtunrgQDdLi+jxT5jxfPyYVHRg+0m158n3lvz/ilJuaZuPpQHnfO6QljpdyzjjxwdVjdyyVZ+8Ws85ZIzpfcjLGsEFStAUG2tav9gDbSVi7sgl2AD/MEcTGv2aVbz33e98NZVmgk724gddg83FEMigcOyAJkF/xO8sCTCqTzHQrrsLt+cIuAVYuQpZcrr8GElGyp4QrfGiOu8mDGFW//ZUg0m9+6JOb6yIe2g+AZOqoCQrsbh6RPLMlM/atWf7H4/CsE584="
+    access_key:
+      secure: "mqNn/u8IOfooe/a/uZg2CJh5U+weU4o+HkB3DAF92jLGYWvu79UD+wRi31Q+/Jt1LRGi83HcwPU9wOIXfQaLmb14lVhnoPcK5kxowM0y+S9fXvUKwzlH00mbve6MhW10w/FMwdktrkwXbU8W3eknZ+zUkCa/FcfCjvR0X97KwhUaQm+68bw9Dcr3btjsUAspaLntFkP7NXVwDoz8Evdmi1TwAgRRMSNLnmefISvPnGuWQm0rC9dK/eM3e5RVBf9WMcj8nAh9VFp8BZozfBxS7MisPbIJ86QGOZiWd2sBrL8LsmakfkxivC/n+LHFUGxpv6g2Oz2gJfYXH8e4Aw9RgKvZPPaFsq/NhpDwBzCt0n2qGGULbd273O8Zu0JSZfqrCcsHRQGusMeFTq18bY1ym9XxNEnNJy4uW5DSivMpyeD3ZbnBpUD3YndPUGRL6mknaegw7fWGy8rmxXgYNtv9p7RNPkZ3qmj78THnOQ7xi8tHgSRzfRkYkB6zWhioDHY6P4ShQZcVDtFDaKwjLgDYgbU8uoR7RCXRryggrbysQlMJG7+mzkDJ5eRRSKf5YL2jK/oIrePn3qD7LUZ7/1lpA5Bxe2pIxThcujtgImNvpYGBnGK4UiLQ7bc+U6XhkgmWO7rmDhzlS5y9kxKPDC5l6zVC1u7EotN9QQBZBln85gM="
+# Developers do not need coveralls installed locally while developing. So
+# there's no great benefit to adding it to devDependencies. Instead, we install
+# it here.
+before_script: npm i --no-save coveralls
+script: npm run build-and-test -- --browsers=all
+after_success: ./node_modules/.bin/coveralls < coverage/lcov.info

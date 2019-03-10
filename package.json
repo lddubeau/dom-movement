@@ -1,0 +1,75 @@
+{
+  "name": "dom-movement",
+  "version": "1.0.0",
+  "description": "A library for moving through a DOM tree character by character.",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc -p src/tsconfig.json --outDir build/dist",
+    "copy": "cp -p package.json README.md build/dist",
+    "build": "npm run tsc && npm run copy && terser build/dist/dom-movement.js --source-map content='build/dist/dom-movement.js.map' --output build/dist/dom-movement.min.js",
+    "test": "karma start --single-run",
+    "lint": "tslint -p src/tsconfig.json src/*.ts && tslint -p test/tsconfig.json test/*.ts && eslint *.js test/*.js",
+    "posttest": "npm run lint",
+    "self:publish": "cd build/dist && npm publish",
+    "self:pack": "cd build/dist && npm pack && mv *.tgz ..",
+    "postversion": "npm run build && npm run self:publish",
+    "postpublish": "git push origin --follow-tags",
+    "clean": "rm -rf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lddubeau/dom-movement.git"
+  },
+  "keywords": [
+    "DOM",
+    "movent",
+    "caret",
+    "position"
+  ],
+  "author": "Louis-Dominque Dubeau <ldd@lddubeau.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lddubeau/dom-movement/issues"
+  },
+  "homepage": "https://github.com/lddubeau/dom-movement#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-angular": "^7.5.0",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/sinon": "^7.0.6",
+    "@types/sinon-chai": "^3.2.2",
+    "chai": "^4.2.0",
+    "eslint": "^5.14.1",
+    "eslint-config-lddubeau-base": "^3.0.1",
+    "husky": "^1.3.1",
+    "karma": "^4.0.0",
+    "karma-browserstack-config": "^1.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-instrumenter": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "^2.0.5",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-serve-static-map": "^1.0.0",
+    "karma-source-map-support": "^1.4.0",
+    "karma-typescript-agile-preprocessor": "^2.1.2",
+    "mocha": "^6.0.1",
+    "renovate-config-lddubeau": "^1.0.0",
+    "sinon": "^7.2.4",
+    "sinon-chai": "^3.3.0",
+    "systemjs": "^0.21.6",
+    "terser": "^3.17.0",
+    "tslint": "^5.12.1",
+    "tslint-config-lddubeau": "^2.1.0",
+    "typescript": "^3.3.3333"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "karma-browserstack-launcher": "^1.4.0"
+  }
+}
