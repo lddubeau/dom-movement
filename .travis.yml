@@ -16,5 +16,5 @@ addons:
 # there's no great benefit to adding it to devDependencies. Instead, we install
 # it here.
 before_script: npm i --no-save coveralls
-script: npm run build-and-test -- --browsers=all
+script: npm run test -- --browsers=all
 after_success: ./node_modules/.bin/coveralls < coverage/lcov.info
