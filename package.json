@@ -2,7 +2,7 @@
   "name": "dom-movement",
   "version": "1.0.2",
   "description": "A library for moving through a DOM tree character by character.",
-  "main": "index.js",
+  "main": "dom-movement.js",
   "scripts": {
     "tsc": "tsc -p src/tsconfig.json --outDir build/dist",
     "copy": "cp -p package.json README.md build/dist",
