@@ -7,7 +7,7 @@
  *
  * See https://github.com/Microsoft/TypeScript/issues/12123.
  */
-// tslint:disable:no-any
+// tslint:disable-next-line:ban-types
 export function fixPrototype(obj: any, parent: Function): void {
   // getPrototypeOf is supported as far back as IE9
   const oldProto = Object.getPrototypeOf(obj);

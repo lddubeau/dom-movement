@@ -521,18 +521,15 @@ and stuff<ig>baz</ig></p></div><!-- baz --><div>Another div.</div></div>`,
     it("throws if min is irrelevant", () => {
       expect(() => new DOMSpace(
         new DOMLoc(doc, 0),
-        new DOMLoc(doc.getElementsByTagName("div")[0], 0),
-        (x) => x === doc))
+        new DOMLoc(doc.getElementsByTagName("div")[0], 0), x => x === doc))
         .to.throw(CannotEscapeIrrelevantNode,
                   "location is irrelevant and cannot be escaped");
     });
 
     it("throws if max is irrelevant", () => {
       const div = doc.getElementsByTagName("div")[0];
-      expect(() => new DOMSpace(
-        new DOMLoc(doc, 0),
-        new DOMLoc(div, 0),
-        (x) => x === div))
+      expect(() => new DOMSpace(new DOMLoc(doc, 0), new DOMLoc(div, 0),
+                                x => x === div))
         .to.throw(CannotEscapeIrrelevantNode,
                   "location is irrelevant and cannot be escaped");
     });
@@ -624,7 +621,7 @@ built-in tests",
            expect(space.isRelevant(p)).to.be.true;
            expect(stub).to.have.been.calledOnce.and.been.calledWith(p);
            // tslint:disable-next-line:chai-vague-errors
-           expect(DOMSpace.makeSpanningNode(doc, (node) => node !== p)
+           expect(DOMSpace.makeSpanningNode(doc, node => node !== p)
                   .isRelevant(p)).to.be.false;
          });
 
