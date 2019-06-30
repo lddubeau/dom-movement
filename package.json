@@ -42,7 +42,7 @@
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-config-lddubeau-base": "^3.0.3",
-    "husky": "^2.4.0",
+    "husky": "^2.7.0",
     "karma": "^4.1.0",
     "karma-browserstack-config": "^1.0.1",
     "karma-browserstack-launcher": "^1.5.1",
