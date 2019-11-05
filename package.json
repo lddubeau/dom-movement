@@ -63,7 +63,7 @@
     "terser": "^4.3.9",
     "tslint": "^5.20.0",
     "tslint-config-lddubeau": "^4.1.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "husky": {
     "hooks": {
