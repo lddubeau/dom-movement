@@ -60,7 +60,7 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0",
     "systemjs": "^0.21.6",
-    "terser": "^4.3.10",
+    "terser": "^4.3.11",
     "tslint": "^5.20.1",
     "tslint-config-lddubeau": "^4.1.0",
     "typescript": "^3.7.2"
