@@ -52,7 +52,7 @@
     "karma-firefox-launcher": "^1.2.0",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
-    "karma-serve-static-map": "^1.0.0",
+    "karma-serve-static-map": "^2.0.0",
     "karma-source-map-support": "^1.4.0",
     "karma-typescript-agile-preprocessor": "^2.1.3",
     "mocha": "^6.2.2",
