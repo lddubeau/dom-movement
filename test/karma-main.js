@@ -1,4 +1,4 @@
-/* global SystemJS */
+/* global SystemJS window */
 (function main() {
   "use strict";
 
@@ -8,7 +8,7 @@
   // Cancel the autorun.
   window.__karma__.loaded = function loaded() {};
 
-  Object.keys(window.__karma__.files).forEach((file) => {
+  Object.keys(window.__karma__.files).forEach(file => {
     if (TEST_REGEXP.test(file)) {
       const normalizedTestModule = file.replace(/^\/base\/|\.js$/g, "");
       allTestFiles.push(normalizedTestModule);
@@ -22,8 +22,8 @@
       "*": "npm:*",
     },
     map: {
-      chai: "npm:chai/chai",
-      sinon: "npm:sinon/pkg/sinon",
+      "chai": "npm:chai/chai",
+      "sinon": "npm:sinon/pkg/sinon",
       "sinon-chai": "npm:sinon-chai",
     },
     packages: {

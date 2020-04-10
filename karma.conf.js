@@ -3,13 +3,13 @@
 "use strict";
 
 const path = require("path");
-// eslint-disable-next-line import/no-extraneous-dependencies
 const { ConfigBuilder, lintConfig } = require("karma-browserstack-config");
 
 const { env: { CONTINUOUS_INTEGRATION } } = process;
 
 module.exports = function configure(config) {
-  const coverage = !config.debug ? ["karma-coverage-istanbul-instrumenter"] : [];
+  const coverage =
+        !config.debug ? ["karma-coverage-istanbul-instrumenter"] : [];
 
   const customLaunchers = new ConfigBuilder({ mobile: true }).getConfigs({
     excludes: [/^IE/, "Safari9"],
@@ -41,7 +41,7 @@ module.exports = function configure(config) {
     typescriptPreprocessor: {
       tsconfigPath: "./test/tsconfig.json",
       compilerOptions: {
-        // eslint-disable-next-line global-require, import/no-extraneous-dependencies
+        // eslint-disable-next-line global-require
         typescript: require("typescript"),
       },
       sourcemapOptions: {
@@ -83,6 +83,10 @@ module.exports = function configure(config) {
     // Running outside Travis: we get our configuration from ./local-config, if
     // it exists.
     try {
+      //
+      // We need to keep turning off import/no-unresolved because localConfig
+      // may not always be present.
+      //
       // eslint-disable-next-line import/no-unresolved, global-require
       localConfig = require("./localConfig");
     }
@@ -94,7 +98,8 @@ module.exports = function configure(config) {
 
   const { browsers } = config;
   if (browsers.length === 1 && browsers[0] === "all") {
-    const newList = options.browsers.concat(Object.keys(options.customLaunchers));
+    const newList =
+          options.browsers.concat(Object.keys(options.customLaunchers));
 
     // Yes, we must modify this array in place.
     browsers.splice(0, browsers.length, ...newList);
